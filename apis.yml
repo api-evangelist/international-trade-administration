@@ -9,10 +9,10 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Federal Government
-  - Trade
   - Export
+  - Federal Government
   - International Business
+  - Trade
 url: >-
   https://raw.githubusercontent.com/api-evangelist/international-trade-administration/refs/heads/main/apis.yml
 created: '2024-12-03'
@@ -28,9 +28,9 @@ apis:
       trade event information.
     humanURL: https://developer.trade.gov
     tags:
-      - Trade Data
       - Export
       - Federal Government
+      - Trade Data
     properties:
       - type: Documentation
         url: https://developer.trade.gov
