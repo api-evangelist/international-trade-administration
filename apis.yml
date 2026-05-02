@@ -61,7 +61,7 @@ apis:
       - type: OpenAPI
         url: openapi/international-trade-administration-openapi.yml
       - type: Rules
-        url: openapi/international-trade-administration-rules.yml
+        url: rules/international-trade-administration-rules.yml
 common:
   - type: Portal
     url: https://developer.trade.gov

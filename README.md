@@ -54,7 +54,7 @@ The ITA Data Services Platform provides direct access to authoritative U.S. expo
 - [Service Level Agreement](https://developer.trade.gov/service-level-agreement)
 - [Pricing](https://developer.trade.gov/pricing)
 - [OpenAPI](openapi/international-trade-administration-openapi.yml)
-- [Rules](openapi/international-trade-administration-rules.yml)
+- [Rules](rules/international-trade-administration-rules.yml)
 
 ## Common Properties
 
