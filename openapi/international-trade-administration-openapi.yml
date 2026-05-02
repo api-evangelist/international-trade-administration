@@ -1,0 +1,657 @@
+openapi: 3.1.0
+info:
+  title: International Trade Administration Data Services API
+  description: >-
+    The International Trade Administration (ITA) Data Services Platform
+    provides programmatic access to authoritative U.S. trade data including
+    the Consolidated Screening List (CSL), Country Commercial Guides (CCG),
+    Market Intelligence, Trade Events, and the Customs Info Tariff Database.
+    Access requires an API subscription key issued through the ITA developer
+    portal.
+  version: '1.0'
+  contact:
+    name: ITA Data Services
+    url: https://developer.trade.gov
+    email: DataServices@trade.gov
+  license:
+    name: ITA Terms of Service
+    url: https://developer.trade.gov/terms-of-service
+externalDocs:
+  description: ITA Developer Portal
+  url: https://developer.trade.gov
+servers:
+  - url: https://data.trade.gov
+    description: Production
+tags:
+  - name: Consolidated Screening List
+    description: >-
+      Search the consolidated list of parties for which the U.S. Government
+      maintains restrictions on certain exports, reexports, or transfers of
+      items. Combines screening lists from the Departments of Commerce,
+      State, and Treasury.
+  - name: Country Commercial Guides
+    description: >-
+      Country-specific reports prepared by U.S. embassies covering the
+      market conditions, opportunities, regulations, and business customs
+      for U.S. exporters.
+  - name: Market Intelligence
+    description: >-
+      Curated market intelligence articles authored by ITA's network of
+      international trade specialists.
+  - name: Trade Events
+    description: >-
+      Aggregated international trade events including trade missions,
+      conferences, webinars, and trade shows from federal partners.
+  - name: Customs Tariff
+    description: >-
+      Tariff rates and import requirements for U.S. exports across global
+      markets via the Customs Info Database.
+  - name: De Minimis
+    description: >-
+      Country-level customs de minimis values - the threshold below which
+      duty and tax do not apply to imported goods.
+paths:
+  /consolidated_screening_list/v1/search:
+    get:
+      tags:
+        - Consolidated Screening List
+      summary: Search the Consolidated Screening List
+      description: >-
+        Search the unified Consolidated Screening List of parties subject
+        to U.S. export restrictions across the Bureau of Industry and
+        Security, the Department of State, and the Department of the
+        Treasury.
+      operationId: searchConsolidatedScreeningList
+      parameters:
+        - name: name
+          in: query
+          description: Name of the entity or individual to screen.
+          schema:
+            type: string
+        - name: fuzzy_name
+          in: query
+          description: Enable fuzzy name matching.
+          schema:
+            type: string
+            enum: ['true', 'false']
+        - name: sources
+          in: query
+          description: Comma-separated list of source lists to query.
+          schema:
+            type: string
+        - name: countries
+          in: query
+          description: Comma-separated ISO country codes to filter results.
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: Filter by type (Entity, Individual, Vessel, Aircraft).
+          schema:
+            type: string
+        - name: size
+          in: query
+          description: Number of results per page (max 100).
+          schema:
+            type: integer
+            default: 10
+        - name: offset
+          in: query
+          description: Pagination offset.
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: Matching screening-list entries.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScreeningListResults'
+      security:
+        - subscriptionKey: []
+  /consolidated_screening_list/v1/sources:
+    get:
+      tags:
+        - Consolidated Screening List
+      summary: List screening list sources
+      description: Retrieve metadata about all source lists feeding the CSL.
+      operationId: listScreeningSources
+      responses:
+        '200':
+          description: List of source lists.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ScreeningSource'
+      security:
+        - subscriptionKey: []
+  /CCG/v2/search:
+    get:
+      tags:
+        - Country Commercial Guides
+      summary: Search Country Commercial Guides
+      description: >-
+        Search Country Commercial Guide chapters published by U.S.
+        commercial service officers covering market conditions and
+        opportunities.
+      operationId: searchCountryCommercialGuides
+      parameters:
+        - name: q
+          in: query
+          description: Free-text query.
+          schema:
+            type: string
+        - name: countries
+          in: query
+          description: Comma-separated ISO country codes.
+          schema:
+            type: string
+        - name: industries
+          in: query
+          description: Comma-separated industry filter.
+          schema:
+            type: string
+        - name: size
+          in: query
+          schema:
+            type: integer
+            default: 10
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: Matching Country Commercial Guide chapters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CCGResults'
+      security:
+        - subscriptionKey: []
+  /market_intelligence/v1/search:
+    get:
+      tags:
+        - Market Intelligence
+      summary: Search Market Intelligence articles
+      description: >-
+        Retrieve market intelligence reports authored by ITA's industry
+        and country experts.
+      operationId: searchMarketIntelligence
+      parameters:
+        - name: q
+          in: query
+          schema:
+            type: string
+        - name: countries
+          in: query
+          schema:
+            type: string
+        - name: industries
+          in: query
+          schema:
+            type: string
+        - name: size
+          in: query
+          schema:
+            type: integer
+            default: 10
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: Matching market intelligence articles.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MarketIntelligenceResults'
+      security:
+        - subscriptionKey: []
+  /events/v1/search:
+    get:
+      tags:
+        - Trade Events
+      summary: Search Trade Events
+      description: >-
+        Search aggregated trade events from federal export-promotion
+        partners including trade missions, webinars, conferences, and
+        in-person trade shows.
+      operationId: searchTradeEvents
+      parameters:
+        - name: q
+          in: query
+          schema:
+            type: string
+        - name: event_types
+          in: query
+          schema:
+            type: string
+        - name: industries
+          in: query
+          schema:
+            type: string
+        - name: countries
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: end_date
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: size
+          in: query
+          schema:
+            type: integer
+            default: 10
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: Matching trade events.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TradeEventsResults'
+      security:
+        - subscriptionKey: []
+  /customs_tariff/v1/search:
+    get:
+      tags:
+        - Customs Tariff
+      summary: Search the Customs Info Tariff Database
+      description: >-
+        Look up tariff rates and import requirements for products being
+        exported to global markets.
+      operationId: searchCustomsTariff
+      parameters:
+        - name: country
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: hs_code
+          in: query
+          schema:
+            type: string
+        - name: keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Tariff lookup results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomsTariffResults'
+      security:
+        - subscriptionKey: []
+  /de_minimis/v1/search:
+    get:
+      tags:
+        - De Minimis
+      summary: Search De Minimis values
+      description: >-
+        Look up de minimis import thresholds for global markets. The de
+        minimis is the value below which no duty or tax is charged on
+        imported goods.
+      operationId: searchDeMinimis
+      parameters:
+        - name: countries
+          in: query
+          schema:
+            type: string
+        - name: size
+          in: query
+          schema:
+            type: integer
+            default: 10
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: De minimis values matching the query.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeMinimisResults'
+      security:
+        - subscriptionKey: []
+components:
+  securitySchemes:
+    subscriptionKey:
+      type: apiKey
+      in: header
+      name: subscription-key
+      description: >-
+        ITA APIs require an Ocp-Apim Subscription Key obtained from the
+        developer.trade.gov portal.
+  schemas:
+    ScreeningListResults:
+      type: object
+      properties:
+        total:
+          type: integer
+        sources_used:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScreeningSource'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScreeningListEntry'
+    ScreeningListEntry:
+      type: object
+      properties:
+        id:
+          type: string
+        source:
+          type: string
+        entity_number:
+          type: string
+        type:
+          type: string
+        name:
+          type: string
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+        alt_names:
+          type: array
+          items:
+            type: string
+        federal_register_notice:
+          type: string
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        standard_order:
+          type: string
+        license_requirement:
+          type: string
+        license_policy:
+          type: string
+        call_sign:
+          type: string
+        vessel_type:
+          type: string
+        gross_tonnage:
+          type: integer
+        gross_registered_tonnage:
+          type: integer
+        vessel_flag:
+          type: string
+        vessel_owner:
+          type: string
+        remarks:
+          type: string
+        source_list_url:
+          type: string
+        source_information_url:
+          type: string
+        ids:
+          type: array
+          items:
+            $ref: '#/components/schemas/IdentityDocument'
+    Address:
+      type: object
+      properties:
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postal_code:
+          type: string
+        country:
+          type: string
+    IdentityDocument:
+      type: object
+      properties:
+        type:
+          type: string
+        number:
+          type: string
+        country:
+          type: string
+        issue_date:
+          type: string
+        expiration_date:
+          type: string
+    ScreeningSource:
+      type: object
+      properties:
+        source:
+          type: string
+        source_full_name:
+          type: string
+        source_short_name:
+          type: string
+        source_list_url:
+          type: string
+        source_information_url:
+          type: string
+        source_last_imported:
+          type: string
+          format: date-time
+        source_last_updated:
+          type: string
+          format: date-time
+    CCGResults:
+      type: object
+      properties:
+        total:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/CCGChapter'
+    CCGChapter:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        countries:
+          type: array
+          items:
+            type: string
+        industries:
+          type: array
+          items:
+            type: string
+        url:
+          type: string
+        publish_date:
+          type: string
+          format: date
+        content:
+          type: string
+    MarketIntelligenceResults:
+      type: object
+      properties:
+        total:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/MarketIntelligenceArticle'
+    MarketIntelligenceArticle:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        countries:
+          type: array
+          items:
+            type: string
+        industries:
+          type: array
+          items:
+            type: string
+        publish_date:
+          type: string
+          format: date
+        author:
+          type: string
+        summary:
+          type: string
+        url:
+          type: string
+    TradeEventsResults:
+      type: object
+      properties:
+        total:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TradeEvent'
+    TradeEvent:
+      type: object
+      properties:
+        id:
+          type: string
+        event_name:
+          type: string
+        event_type:
+          type: string
+        description:
+          type: string
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        venues:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventVenue'
+        registration_link:
+          type: string
+        cost:
+          type: string
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventContact'
+        industries:
+          type: array
+          items:
+            type: string
+        countries:
+          type: array
+          items:
+            type: string
+        url:
+          type: string
+        sponsoring_agency:
+          type: string
+    EventVenue:
+      type: object
+      properties:
+        venue:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        state:
+          type: string
+    EventContact:
+      type: object
+      properties:
+        person:
+          type: string
+        person_title:
+          type: string
+        post:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+    CustomsTariffResults:
+      type: object
+      properties:
+        total:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TariffEntry'
+    TariffEntry:
+      type: object
+      properties:
+        country:
+          type: string
+        hs_code:
+          type: string
+        description:
+          type: string
+        general_rate:
+          type: string
+        special_rates:
+          type: array
+          items:
+            type: object
+            properties:
+              program:
+                type: string
+              rate:
+                type: string
+        notes:
+          type: string
+    DeMinimisResults:
+      type: object
+      properties:
+        total:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeMinimisEntry'
+    DeMinimisEntry:
+      type: object
+      properties:
+        country:
+          type: string
+        currency:
+          type: string
+        de_minimis_value:
+          type: number
+        de_minimis_value_usd:
+          type: number
+        notes:
+          type: string
+        last_updated:
+          type: string
+          format: date

@@ -1,0 +1,62 @@
+aid: international-trade-administration:international-trade-administration-rules
+name: International Trade Administration API Rules
+description: >-
+  Operational and governance rules for consuming the International Trade
+  Administration Data Services Platform APIs. These rules describe
+  authentication, rate limiting, terms of service, and acceptable use
+  expectations defined by ITA.
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/international-trade-administration/refs/heads/main/openapi/international-trade-administration-rules.yml
+modified: '2026-04-28'
+specificationVersion: '0.19'
+rules:
+  - name: Subscription Key Required
+    description: >-
+      All requests must include a valid Ocp-Apim-Subscription-Key header
+      issued through the developer.trade.gov portal.
+    type: Authentication
+    enforcement: Required
+  - name: Terms of Service Acceptance
+    description: >-
+      Consumers must accept the ITA Data Services Terms of Service prior
+      to using the APIs in production.
+    type: Legal
+    enforcement: Required
+    url: https://developer.trade.gov/terms-of-service
+  - name: Service Level Agreement
+    description: >-
+      ITA targets best-effort availability for its data services and
+      publishes incident notices through the developer portal.
+    type: SLA
+    enforcement: Advisory
+    url: https://developer.trade.gov/service-level-agreement
+  - name: Attribution
+    description: >-
+      Applications consuming ITA data should attribute the International
+      Trade Administration as the source.
+    type: Attribution
+    enforcement: Recommended
+  - name: Acceptable Use
+    description: >-
+      ITA APIs are made available for lawful trade-promotion and
+      compliance purposes. Bulk scraping, redistribution as a competing
+      service, or use that violates U.S. export law is prohibited.
+    type: Acceptable Use
+    enforcement: Required
+  - name: Rate Limiting
+    description: >-
+      Default subscription tiers throttle requests; high-volume consumers
+      should request elevated quotas through DataServices@trade.gov.
+    type: Rate Limiting
+    enforcement: Required
+  - name: Data Freshness
+    description: >-
+      Source list update cadences vary by dataset; the screening list
+      sources endpoint exposes per-source last-imported and last-updated
+      timestamps.
+    type: Data Quality
+    enforcement: Advisory
+contact:
+  - FN: ITA Data Services
+    email: DataServices@trade.gov
+    url: https://developer.trade.gov
