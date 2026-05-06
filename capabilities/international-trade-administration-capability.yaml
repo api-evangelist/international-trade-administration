@@ -1,0 +1,506 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: International Trade Administration Data Services API
+  description: The International Trade Administration (ITA) Data Services Platform provides programmatic access to authoritative
+    U.S. trade data including the Consolidated Screening List (CSL), Country Commercial Guides (CCG), Market Intelligence,
+    Trade Events, and the Customs Info Tariff Database. Access requires an API subscription key issued through the ITA developer
+    portal.
+  tags:
+  - International
+  - Trade
+  - Administration
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: international-trade-administration
+    baseUri: https://data.trade.gov
+    description: International Trade Administration Data Services API HTTP API.
+    authentication:
+      type: apikey
+      in: header
+      name: subscription-key
+      value: '{{INTERNATIONAL_TRADE_ADMINISTRATION_TOKEN}}'
+    resources:
+    - name: consolidated-screening-list-v1-search
+      path: /consolidated_screening_list/v1/search
+      operations:
+      - name: searchconsolidatedscreeninglist
+        method: GET
+        description: Search the Consolidated Screening List
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+          description: Name of the entity or individual to screen.
+        - name: fuzzy_name
+          in: query
+          type: string
+          description: Enable fuzzy name matching.
+        - name: sources
+          in: query
+          type: string
+          description: Comma-separated list of source lists to query.
+        - name: countries
+          in: query
+          type: string
+          description: Comma-separated ISO country codes to filter results.
+        - name: type
+          in: query
+          type: string
+          description: Filter by type (Entity, Individual, Vessel, Aircraft).
+        - name: size
+          in: query
+          type: integer
+          description: Number of results per page (max 100).
+        - name: offset
+          in: query
+          type: integer
+          description: Pagination offset.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: consolidated-screening-list-v1-sources
+      path: /consolidated_screening_list/v1/sources
+      operations:
+      - name: listscreeningsources
+        method: GET
+        description: List screening list sources
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ccg-v2-search
+      path: /CCG/v2/search
+      operations:
+      - name: searchcountrycommercialguides
+        method: GET
+        description: Search Country Commercial Guides
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: Free-text query.
+        - name: countries
+          in: query
+          type: string
+          description: Comma-separated ISO country codes.
+        - name: industries
+          in: query
+          type: string
+          description: Comma-separated industry filter.
+        - name: size
+          in: query
+          type: integer
+        - name: offset
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: market-intelligence-v1-search
+      path: /market_intelligence/v1/search
+      operations:
+      - name: searchmarketintelligence
+        method: GET
+        description: Search Market Intelligence articles
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+        - name: countries
+          in: query
+          type: string
+        - name: industries
+          in: query
+          type: string
+        - name: size
+          in: query
+          type: integer
+        - name: offset
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: events-v1-search
+      path: /events/v1/search
+      operations:
+      - name: searchtradeevents
+        method: GET
+        description: Search Trade Events
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+        - name: event_types
+          in: query
+          type: string
+        - name: industries
+          in: query
+          type: string
+        - name: countries
+          in: query
+          type: string
+        - name: start_date
+          in: query
+          type: string
+        - name: end_date
+          in: query
+          type: string
+        - name: size
+          in: query
+          type: integer
+        - name: offset
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: customs-tariff-v1-search
+      path: /customs_tariff/v1/search
+      operations:
+      - name: searchcustomstariff
+        method: GET
+        description: Search the Customs Info Tariff Database
+        inputParameters:
+        - name: country
+          in: query
+          type: string
+          required: true
+        - name: hs_code
+          in: query
+          type: string
+        - name: keyword
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: de-minimis-v1-search
+      path: /de_minimis/v1/search
+      operations:
+      - name: searchdeminimis
+        method: GET
+        description: Search De Minimis values
+        inputParameters:
+        - name: countries
+          in: query
+          type: string
+        - name: size
+          in: query
+          type: integer
+        - name: offset
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: international-trade-administration-rest
+    description: REST adapter for International Trade Administration Data Services API.
+    resources:
+    - path: /consolidated_screening_list/v1/search
+      name: searchconsolidatedscreeninglist
+      operations:
+      - method: GET
+        name: searchconsolidatedscreeninglist
+        description: Search the Consolidated Screening List
+        call: international-trade-administration.searchconsolidatedscreeninglist
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /consolidated_screening_list/v1/sources
+      name: listscreeningsources
+      operations:
+      - method: GET
+        name: listscreeningsources
+        description: List screening list sources
+        call: international-trade-administration.listscreeningsources
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /CCG/v2/search
+      name: searchcountrycommercialguides
+      operations:
+      - method: GET
+        name: searchcountrycommercialguides
+        description: Search Country Commercial Guides
+        call: international-trade-administration.searchcountrycommercialguides
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /market_intelligence/v1/search
+      name: searchmarketintelligence
+      operations:
+      - method: GET
+        name: searchmarketintelligence
+        description: Search Market Intelligence articles
+        call: international-trade-administration.searchmarketintelligence
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /events/v1/search
+      name: searchtradeevents
+      operations:
+      - method: GET
+        name: searchtradeevents
+        description: Search Trade Events
+        call: international-trade-administration.searchtradeevents
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /customs_tariff/v1/search
+      name: searchcustomstariff
+      operations:
+      - method: GET
+        name: searchcustomstariff
+        description: Search the Customs Info Tariff Database
+        call: international-trade-administration.searchcustomstariff
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /de_minimis/v1/search
+      name: searchdeminimis
+      operations:
+      - method: GET
+        name: searchdeminimis
+        description: Search De Minimis values
+        call: international-trade-administration.searchdeminimis
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: international-trade-administration-mcp
+    transport: http
+    description: MCP adapter for International Trade Administration Data Services API for AI agent use.
+    tools:
+    - name: searchconsolidatedscreeninglist
+      description: Search the Consolidated Screening List
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: international-trade-administration.searchconsolidatedscreeninglist
+      with:
+        name: tools.name
+        fuzzy_name: tools.fuzzy_name
+        sources: tools.sources
+        countries: tools.countries
+        type: tools.type
+        size: tools.size
+        offset: tools.offset
+      inputParameters:
+      - name: name
+        type: string
+        description: Name of the entity or individual to screen.
+      - name: fuzzy_name
+        type: string
+        description: Enable fuzzy name matching.
+      - name: sources
+        type: string
+        description: Comma-separated list of source lists to query.
+      - name: countries
+        type: string
+        description: Comma-separated ISO country codes to filter results.
+      - name: type
+        type: string
+        description: Filter by type (Entity, Individual, Vessel, Aircraft).
+      - name: size
+        type: integer
+        description: Number of results per page (max 100).
+      - name: offset
+        type: integer
+        description: Pagination offset.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listscreeningsources
+      description: List screening list sources
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: international-trade-administration.listscreeningsources
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: searchcountrycommercialguides
+      description: Search Country Commercial Guides
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: international-trade-administration.searchcountrycommercialguides
+      with:
+        q: tools.q
+        countries: tools.countries
+        industries: tools.industries
+        size: tools.size
+        offset: tools.offset
+      inputParameters:
+      - name: q
+        type: string
+        description: Free-text query.
+      - name: countries
+        type: string
+        description: Comma-separated ISO country codes.
+      - name: industries
+        type: string
+        description: Comma-separated industry filter.
+      - name: size
+        type: integer
+        description: size
+      - name: offset
+        type: integer
+        description: offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: searchmarketintelligence
+      description: Search Market Intelligence articles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: international-trade-administration.searchmarketintelligence
+      with:
+        q: tools.q
+        countries: tools.countries
+        industries: tools.industries
+        size: tools.size
+        offset: tools.offset
+      inputParameters:
+      - name: q
+        type: string
+        description: q
+      - name: countries
+        type: string
+        description: countries
+      - name: industries
+        type: string
+        description: industries
+      - name: size
+        type: integer
+        description: size
+      - name: offset
+        type: integer
+        description: offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: searchtradeevents
+      description: Search Trade Events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: international-trade-administration.searchtradeevents
+      with:
+        q: tools.q
+        event_types: tools.event_types
+        industries: tools.industries
+        countries: tools.countries
+        start_date: tools.start_date
+        end_date: tools.end_date
+        size: tools.size
+        offset: tools.offset
+      inputParameters:
+      - name: q
+        type: string
+        description: q
+      - name: event_types
+        type: string
+        description: event_types
+      - name: industries
+        type: string
+        description: industries
+      - name: countries
+        type: string
+        description: countries
+      - name: start_date
+        type: string
+        description: start_date
+      - name: end_date
+        type: string
+        description: end_date
+      - name: size
+        type: integer
+        description: size
+      - name: offset
+        type: integer
+        description: offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: searchcustomstariff
+      description: Search the Customs Info Tariff Database
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: international-trade-administration.searchcustomstariff
+      with:
+        country: tools.country
+        hs_code: tools.hs_code
+        keyword: tools.keyword
+      inputParameters:
+      - name: country
+        type: string
+        description: country
+        required: true
+      - name: hs_code
+        type: string
+        description: hs_code
+      - name: keyword
+        type: string
+        description: keyword
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: searchdeminimis
+      description: Search De Minimis values
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: international-trade-administration.searchdeminimis
+      with:
+        countries: tools.countries
+        size: tools.size
+        offset: tools.offset
+      inputParameters:
+      - name: countries
+        type: string
+        description: countries
+      - name: size
+        type: integer
+        description: size
+      - name: offset
+        type: integer
+        description: offset
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    INTERNATIONAL_TRADE_ADMINISTRATION_TOKEN: INTERNATIONAL_TRADE_ADMINISTRATION_TOKEN
