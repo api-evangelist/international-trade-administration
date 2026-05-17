@@ -48,13 +48,13 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.trade.gov
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.trade.gov/getting-started
-      - type: Sign Up
+      - type: SignUp
         url: https://developer.trade.gov/user/register
-      - type: Terms of Service
+      - type: TermsOfService
         url: https://developer.trade.gov/terms-of-service
-      - type: Service Level Agreement
+      - type: ServiceLevelAgreement
         url: https://developer.trade.gov/service-level-agreement
       - type: Pricing
         url: https://developer.trade.gov/pricing
@@ -69,11 +69,11 @@ common:
     url: https://www.trade.gov
   - type: Documentation
     url: https://developer.trade.gov
-  - type: Getting Started
+  - type: GettingStarted
     url: https://developer.trade.gov/getting-started
-  - type: Sign Up
+  - type: SignUp
     url: https://developer.trade.gov/user/register
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://developer.trade.gov/terms-of-service
   - type: Support
     url: https://developer.trade.gov/contact
