@@ -1,0 +1,93 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: International Trade Administration Data Services API — Customs Tariff
+  description: 'International Trade Administration Data Services API — Customs Tariff. 1 operations. Lead operation: Search
+    the Customs Info Tariff Database. Self-contained Naftiko capability covering one International Trade Administration business
+    surface.'
+  tags:
+  - International Trade Administration
+  - Customs Tariff
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    INTERNATIONAL_TRADE_ADMINISTRATION_API_KEY: INTERNATIONAL_TRADE_ADMINISTRATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: international-trade-administration-customs-tariff
+    baseUri: https://data.trade.gov
+    description: International Trade Administration Data Services API — Customs Tariff business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: customs_tariff-v1-search
+      path: /customs_tariff/v1/search
+      operations:
+      - name: searchcustomstariff
+        method: GET
+        description: Search the Customs Info Tariff Database
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: country
+          in: query
+          type: string
+          required: true
+        - name: hs_code
+          in: query
+          type: string
+        - name: keyword
+          in: query
+          type: string
+    authentication:
+      type: apikey
+      key: subscription-key
+      value: '{{env.INTERNATIONAL_TRADE_ADMINISTRATION_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: international-trade-administration-customs-tariff-rest
+    port: 8080
+    description: REST adapter for International Trade Administration Data Services API — Customs Tariff. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/customs-tariff/v1/search
+      name: customs-tariff-v1-search
+      description: REST surface for customs_tariff-v1-search.
+      operations:
+      - method: GET
+        name: searchcustomstariff
+        description: Search the Customs Info Tariff Database
+        call: international-trade-administration-customs-tariff.searchcustomstariff
+        with:
+          country: rest.country
+          hs_code: rest.hs_code
+          keyword: rest.keyword
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: international-trade-administration-customs-tariff-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for International Trade Administration Data Services API — Customs Tariff. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: search-customs-info-tariff-database
+      description: Search the Customs Info Tariff Database
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: international-trade-administration-customs-tariff.searchcustomstariff
+      with:
+        country: tools.country
+        hs_code: tools.hs_code
+        keyword: tools.keyword
+      outputParameters:
+      - type: object
+        mapping: $.
