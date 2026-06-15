@@ -1,9 +1,11 @@
 aid: international-trade-administration
 name: International Trade Administration
-description: The International Trade Administration (ITA) creates prosperity by strengthening the international competitiveness
-  of U.S. industry, promoting trade and investment, and ensuring fair trade and compliance with trade laws and agreements.
-  ITA's Data Services Platform provides authoritative APIs for U.S. exporting and international trade including the Consolidated
-  Screening List, Country Commercial Guides, Market Intelligence, Trade Events, Customs Tariff lookups, and De Minimis thresholds.
+description: >-
+  The International Trade Administration (ITA) creates prosperity by strengthening the international competitiveness of
+  U.S. industry, promoting trade and investment, and ensuring fair trade and compliance with trade laws and agreements.
+  ITA's Data Services Platform provides authoritative APIs for U.S. exporting and international trade including the
+  Consolidated Screening List, Country Commercial Guides, Market Intelligence, Trade Events, Customs Tariff lookups, and
+  De Minimis thresholds.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
@@ -24,47 +26,36 @@ specificationVersion: '0.19'
 apis:
   - aid: international-trade-administration:ita-data-services
     name: ITA Data Services Platform
-    description: The ITA Data Services Platform provides direct access to authoritative U.S. exporting and international trade
-      information via standard APIs, including the Consolidated Screening List, Country Commercial Guides, Market Intelligence,
-      Trade Events, Customs Info Tariff Database, and De Minimis values. Access requires a subscription key issued through the
-      developer portal.
+    description: >-
+      The ITA Data Services Platform provides direct access to authoritative U.S. exporting and international trade
+      information via standard APIs, including the Consolidated Screening List, Country Commercial Guides, Market
+      Intelligence, Trade Events, Customs Info Tariff Database, and De Minimis values. Access requires a subscription
+      key issued through the developer portal.
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     humanURL: https://developer.trade.gov
     baseURL: https://data.trade.gov
     tags:
-    - Export
-    - Federal Government
-    - REST
-    - Trade Data
+      - Export
+      - Federal Government
+      - REST
+      - Trade Data
     properties:
-    - type: Documentation
-      url: https://developer.trade.gov
-    - type: GettingStarted
-      url: https://developer.trade.gov/getting-started
-    - type: SignUp
-      url: https://developer.trade.gov/user/register
-    - type: TermsOfService
-      url: https://developer.trade.gov/terms-of-service
-    - type: ServiceLevelAgreement
-      url: https://developer.trade.gov/service-level-agreement
-    - type: Pricing
-      url: https://developer.trade.gov/pricing
-    - type: OpenAPI
-      url: openapi/international-trade-administration-openapi.yml
-    - type: Rules
-      url: rules/international-trade-administration-rules.yml
-    - type: NaftikoCapability
-      url: capabilities/international-trade-administration-consolidated-screening-list.yaml
-    - type: NaftikoCapability
-      url: capabilities/international-trade-administration-country-commercial-guides.yaml
-    - type: NaftikoCapability
-      url: capabilities/international-trade-administration-customs-tariff.yaml
-    - type: NaftikoCapability
-      url: capabilities/international-trade-administration-de-minimis.yaml
-    - type: NaftikoCapability
-      url: capabilities/international-trade-administration-market-intelligence.yaml
-    - type: NaftikoCapability
-      url: capabilities/international-trade-administration-trade-events.yaml
+      - type: Documentation
+        url: https://developer.trade.gov
+      - type: GettingStarted
+        url: https://developer.trade.gov/getting-started
+      - type: SignUp
+        url: https://developer.trade.gov/user/register
+      - type: TermsOfService
+        url: https://developer.trade.gov/terms-of-service
+      - type: ServiceLevelAgreement
+        url: https://developer.trade.gov/service-level-agreement
+      - type: Pricing
+        url: https://developer.trade.gov/pricing
+      - type: OpenAPI
+        url: openapi/international-trade-administration-openapi.yml
+      - type: Rules
+        url: rules/international-trade-administration-rules.yml
 common:
   - type: GitHubOrganization
     url: https://github.com/InternationalTradeAdministration

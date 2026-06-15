@@ -1,0 +1,1075 @@
+{
+  "item": [
+    {
+      "id": "6f7f6559-d826-4ae1-85ef-bbe2e6c0baa0",
+      "name": "Consolidated Screening List",
+      "description": {
+        "content": "Search the consolidated list of parties for which the U.S. Government maintains restrictions on certain exports, reexports, or transfers of items. Combines screening lists from the Departments of Commerce, State, and Treasury.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "364b5d5a-2767-46ae-85a9-7ff88cddc7fc",
+          "name": "Search the Consolidated Screening List",
+          "request": {
+            "name": "Search the Consolidated Screening List",
+            "description": {
+              "content": "Search the unified Consolidated Screening List of parties subject to U.S. export restrictions across the Bureau of Industry and Security, the Department of State, and the Department of the Treasury.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "consolidated_screening_list",
+                "v1",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Name of the entity or individual to screen."
+                },
+                {
+                  "disabled": false,
+                  "key": "fuzzy_name",
+                  "value": "<string>",
+                  "description": "Enable fuzzy name matching."
+                },
+                {
+                  "disabled": false,
+                  "key": "sources",
+                  "value": "<string>",
+                  "description": "Comma-separated list of source lists to query."
+                },
+                {
+                  "disabled": false,
+                  "key": "countries",
+                  "value": "<string>",
+                  "description": "Comma-separated ISO country codes to filter results."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by type (Entity, Individual, Vessel, Aircraft)."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "10",
+                  "description": "Number of results per page (max 100)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Pagination offset."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "subscription-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "efcd5f25-0539-4f75-93e4-f5d976a9658a",
+              "name": "Matching screening-list entries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "consolidated_screening_list",
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fuzzy_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countries",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "subscription-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 6789,\n  \"sources_used\": [\n    {\n      \"source\": \"string\",\n      \"source_full_name\": \"string\",\n      \"source_short_name\": \"string\",\n      \"source_list_url\": \"string\",\n      \"source_information_url\": \"string\",\n      \"source_last_imported\": \"1980-11-26T19:39:28.232Z\",\n      \"source_last_updated\": \"1976-07-01T15:50:54.021Z\"\n    },\n    {\n      \"source\": \"string\",\n      \"source_full_name\": \"string\",\n      \"source_short_name\": \"string\",\n      \"source_list_url\": \"string\",\n      \"source_information_url\": \"string\",\n      \"source_last_imported\": \"1989-11-07T03:35:56.465Z\",\n      \"source_last_updated\": \"1961-05-07T07:06:42.837Z\"\n    }\n  ],\n  \"results\": [\n    {\n      \"id\": \"string\",\n      \"source\": \"string\",\n      \"entity_number\": \"string\",\n      \"type\": \"string\",\n      \"name\": \"string\",\n      \"addresses\": [\n        {\n          \"address\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"postal_code\": \"string\",\n          \"country\": \"string\"\n        },\n        {\n          \"address\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"postal_code\": \"string\",\n          \"country\": \"string\"\n        }\n      ],\n      \"alt_names\": [\n        \"string\",\n        \"string\"\n      ],\n      \"federal_register_notice\": \"string\",\n      \"start_date\": \"1976-06-13\",\n      \"end_date\": \"1967-07-22\",\n      \"standard_order\": \"string\",\n      \"license_requirement\": \"string\",\n      \"license_policy\": \"string\",\n      \"call_sign\": \"string\",\n      \"vessel_type\": \"string\",\n      \"gross_tonnage\": 4673,\n      \"gross_registered_tonnage\": 3932,\n      \"vessel_flag\": \"string\",\n      \"vessel_owner\": \"string\",\n      \"remarks\": \"string\",\n      \"source_list_url\": \"string\",\n      \"source_information_url\": \"string\",\n      \"ids\": [\n        {\n          \"type\": \"string\",\n          \"number\": \"string\",\n          \"country\": \"string\",\n          \"issue_date\": \"string\",\n          \"expiration_date\": \"string\"\n        },\n        {\n          \"type\": \"string\",\n          \"number\": \"string\",\n          \"country\": \"string\",\n          \"issue_date\": \"string\",\n          \"expiration_date\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"source\": \"string\",\n      \"entity_number\": \"string\",\n      \"type\": \"string\",\n      \"name\": \"string\",\n      \"addresses\": [\n        {\n          \"address\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"postal_code\": \"string\",\n          \"country\": \"string\"\n        },\n        {\n          \"address\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"postal_code\": \"string\",\n          \"country\": \"string\"\n        }\n      ],\n      \"alt_names\": [\n        \"string\",\n        \"string\"\n      ],\n      \"federal_register_notice\": \"string\",\n      \"start_date\": \"1963-09-17\",\n      \"end_date\": \"1993-02-17\",\n      \"standard_order\": \"string\",\n      \"license_requirement\": \"string\",\n      \"license_policy\": \"string\",\n      \"call_sign\": \"string\",\n      \"vessel_type\": \"string\",\n      \"gross_tonnage\": 4687,\n      \"gross_registered_tonnage\": 9056,\n      \"vessel_flag\": \"string\",\n      \"vessel_owner\": \"string\",\n      \"remarks\": \"string\",\n      \"source_list_url\": \"string\",\n      \"source_information_url\": \"string\",\n      \"ids\": [\n        {\n          \"type\": \"string\",\n          \"number\": \"string\",\n          \"country\": \"string\",\n          \"issue_date\": \"string\",\n          \"expiration_date\": \"string\"\n        },\n        {\n          \"type\": \"string\",\n          \"number\": \"string\",\n          \"country\": \"string\",\n          \"issue_date\": \"string\",\n          \"expiration_date\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e75e89a-6b3f-46b2-8713-ef9248807884",
+          "name": "List screening list sources",
+          "request": {
+            "name": "List screening list sources",
+            "description": {
+              "content": "Retrieve metadata about all source lists feeding the CSL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "consolidated_screening_list",
+                "v1",
+                "sources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "subscription-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bdf27d22-87ad-4668-8cab-9549bfc65238",
+              "name": "List of source lists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "consolidated_screening_list",
+                    "v1",
+                    "sources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "subscription-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"source\": \"string\",\n    \"source_full_name\": \"string\",\n    \"source_short_name\": \"string\",\n    \"source_list_url\": \"string\",\n    \"source_information_url\": \"string\",\n    \"source_last_imported\": \"2015-11-28T14:03:22.184Z\",\n    \"source_last_updated\": \"1968-01-04T00:20:18.299Z\"\n  },\n  {\n    \"source\": \"string\",\n    \"source_full_name\": \"string\",\n    \"source_short_name\": \"string\",\n    \"source_list_url\": \"string\",\n    \"source_information_url\": \"string\",\n    \"source_last_imported\": \"1989-05-22T11:21:14.780Z\",\n    \"source_last_updated\": \"1983-05-08T15:25:02.080Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6b69bf4f-1fc5-41f3-95e6-2c8b9ef431c4",
+      "name": "Country Commercial Guides",
+      "description": {
+        "content": "Country-specific reports prepared by U.S. embassies covering the market conditions, opportunities, regulations, and business customs for U.S. exporters.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "222ac6df-bc71-4b72-8ee4-c45c8ebf7b44",
+          "name": "Search Country Commercial Guides",
+          "request": {
+            "name": "Search Country Commercial Guides",
+            "description": {
+              "content": "Search Country Commercial Guide chapters published by U.S. commercial service officers covering market conditions and opportunities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "CCG",
+                "v2",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Free-text query."
+                },
+                {
+                  "disabled": false,
+                  "key": "countries",
+                  "value": "<string>",
+                  "description": "Comma-separated ISO country codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "industries",
+                  "value": "<string>",
+                  "description": "Comma-separated industry filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "10"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "subscription-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4328dad4-8b2c-4400-be3a-0493cea4aa78",
+              "name": "Matching Country Commercial Guide chapters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CCG",
+                    "v2",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countries",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "industries",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "subscription-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 726,\n  \"results\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"countries\": [\n        \"string\",\n        \"string\"\n      ],\n      \"industries\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\",\n      \"publish_date\": \"2002-12-13\",\n      \"content\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"countries\": [\n        \"string\",\n        \"string\"\n      ],\n      \"industries\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\",\n      \"publish_date\": \"1949-10-05\",\n      \"content\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0e21513b-fdb3-4b6d-a678-f97b48e39646",
+      "name": "Market Intelligence",
+      "description": {
+        "content": "Curated market intelligence articles authored by ITA's network of international trade specialists.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "30c44724-f9a7-4b11-a070-999a5073a562",
+          "name": "Search Market Intelligence articles",
+          "request": {
+            "name": "Search Market Intelligence articles",
+            "description": {
+              "content": "Retrieve market intelligence reports authored by ITA's industry and country experts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "market_intelligence",
+                "v1",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "countries",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "industries",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "10"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "subscription-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2e3be82e-9c89-4400-baf6-c54ae23c954d",
+              "name": "Matching market intelligence articles.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "market_intelligence",
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countries",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "industries",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "subscription-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 3862,\n  \"results\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"countries\": [\n        \"string\",\n        \"string\"\n      ],\n      \"industries\": [\n        \"string\",\n        \"string\"\n      ],\n      \"publish_date\": \"2008-06-30\",\n      \"author\": \"string\",\n      \"summary\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"countries\": [\n        \"string\",\n        \"string\"\n      ],\n      \"industries\": [\n        \"string\",\n        \"string\"\n      ],\n      \"publish_date\": \"2005-12-12\",\n      \"author\": \"string\",\n      \"summary\": \"string\",\n      \"url\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "2c83025e-bcdf-4a6f-8bec-01855042d25e",
+      "name": "Trade Events",
+      "description": {
+        "content": "Aggregated international trade events including trade missions, conferences, webinars, and trade shows from federal partners.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0f0c31ee-fe33-4eab-a25b-7df460e49a5e",
+          "name": "Search Trade Events",
+          "request": {
+            "name": "Search Trade Events",
+            "description": {
+              "content": "Search aggregated trade events from federal export-promotion partners including trade missions, webinars, conferences, and in-person trade shows.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "v1",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "event_types",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "industries",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "countries",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "10"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "subscription-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e738b17d-188e-43e3-b2d5-3e512b570e88",
+              "name": "Matching trade events.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "event_types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "industries",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countries",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "subscription-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 9114,\n  \"results\": [\n    {\n      \"id\": \"string\",\n      \"event_name\": \"string\",\n      \"event_type\": \"string\",\n      \"description\": \"string\",\n      \"start_date\": \"1986-05-27\",\n      \"end_date\": \"1992-07-23\",\n      \"venues\": [\n        {\n          \"venue\": \"string\",\n          \"city\": \"string\",\n          \"country\": \"string\",\n          \"state\": \"string\"\n        },\n        {\n          \"venue\": \"string\",\n          \"city\": \"string\",\n          \"country\": \"string\",\n          \"state\": \"string\"\n        }\n      ],\n      \"registration_link\": \"string\",\n      \"cost\": \"string\",\n      \"contacts\": [\n        {\n          \"person\": \"string\",\n          \"person_title\": \"string\",\n          \"post\": \"string\",\n          \"email\": \"string\",\n          \"phone\": \"string\"\n        },\n        {\n          \"person\": \"string\",\n          \"person_title\": \"string\",\n          \"post\": \"string\",\n          \"email\": \"string\",\n          \"phone\": \"string\"\n        }\n      ],\n      \"industries\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countries\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\",\n      \"sponsoring_agency\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"event_name\": \"string\",\n      \"event_type\": \"string\",\n      \"description\": \"string\",\n      \"start_date\": \"2008-09-05\",\n      \"end_date\": \"2026-01-24\",\n      \"venues\": [\n        {\n          \"venue\": \"string\",\n          \"city\": \"string\",\n          \"country\": \"string\",\n          \"state\": \"string\"\n        },\n        {\n          \"venue\": \"string\",\n          \"city\": \"string\",\n          \"country\": \"string\",\n          \"state\": \"string\"\n        }\n      ],\n      \"registration_link\": \"string\",\n      \"cost\": \"string\",\n      \"contacts\": [\n        {\n          \"person\": \"string\",\n          \"person_title\": \"string\",\n          \"post\": \"string\",\n          \"email\": \"string\",\n          \"phone\": \"string\"\n        },\n        {\n          \"person\": \"string\",\n          \"person_title\": \"string\",\n          \"post\": \"string\",\n          \"email\": \"string\",\n          \"phone\": \"string\"\n        }\n      ],\n      \"industries\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countries\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\",\n      \"sponsoring_agency\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "177094b0-ffc1-4be3-9ae3-aea92173c2cc",
+      "name": "Customs Tariff",
+      "description": {
+        "content": "Tariff rates and import requirements for U.S. exports across global markets via the Customs Info Database.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "77685a83-ac7a-42e0-8af2-1dddc54d0e59",
+          "name": "Search the Customs Info Tariff Database",
+          "request": {
+            "name": "Search the Customs Info Tariff Database",
+            "description": {
+              "content": "Look up tariff rates and import requirements for products being exported to global markets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customs_tariff",
+                "v1",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "hs_code",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "keyword",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "subscription-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "79630469-d401-4b14-a4f9-c586bfcc4858",
+              "name": "Tariff lookup results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customs_tariff",
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hs_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "subscription-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 9742,\n  \"results\": [\n    {\n      \"country\": \"string\",\n      \"hs_code\": \"string\",\n      \"description\": \"string\",\n      \"general_rate\": \"string\",\n      \"special_rates\": [\n        {\n          \"program\": \"string\",\n          \"rate\": \"string\"\n        },\n        {\n          \"program\": \"string\",\n          \"rate\": \"string\"\n        }\n      ],\n      \"notes\": \"string\"\n    },\n    {\n      \"country\": \"string\",\n      \"hs_code\": \"string\",\n      \"description\": \"string\",\n      \"general_rate\": \"string\",\n      \"special_rates\": [\n        {\n          \"program\": \"string\",\n          \"rate\": \"string\"\n        },\n        {\n          \"program\": \"string\",\n          \"rate\": \"string\"\n        }\n      ],\n      \"notes\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0c996e2c-aa30-4ef2-8ffa-cf2a36b81cd1",
+      "name": "De Minimis",
+      "description": {
+        "content": "Country-level customs de minimis values - the threshold below which duty and tax do not apply to imported goods.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b205bd90-f009-43fb-88f4-123d7971be71",
+          "name": "Search De Minimis values",
+          "request": {
+            "name": "Search De Minimis values",
+            "description": {
+              "content": "Look up de minimis import thresholds for global markets. The de minimis is the value below which no duty or tax is charged on imported goods.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "de_minimis",
+                "v1",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "countries",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "10"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "subscription-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4c26ec09-15ad-4c34-99fb-d71b2a725f37",
+              "name": "De minimis values matching the query.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "de_minimis",
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countries",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "subscription-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 753,\n  \"results\": [\n    {\n      \"country\": \"string\",\n      \"currency\": \"string\",\n      \"de_minimis_value\": 846.8462593206316,\n      \"de_minimis_value_usd\": 2001.6468566880064,\n      \"notes\": \"string\",\n      \"last_updated\": \"2022-05-27\"\n    },\n    {\n      \"country\": \"string\",\n      \"currency\": \"string\",\n      \"de_minimis_value\": 8383.786621256548,\n      \"de_minimis_value_usd\": 499.29029942885836,\n      \"notes\": \"string\",\n      \"last_updated\": \"1974-01-02\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data.trade.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9006b446-e5a1-4ba2-a80d-3fcf7a40edc8",
+    "name": "International Trade Administration Data Services API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The International Trade Administration (ITA) Data Services Platform provides programmatic access to authoritative U.S. trade data including the Consolidated Screening List (CSL), Country Commercial Guides (CCG), Market Intelligence, Trade Events, and the Customs Info Tariff Database. Access requires an API subscription key issued through the ITA developer portal.\n\nContact Support:\n Name: ITA Data Services\n Email: DataServices@trade.gov",
+      "type": "text/plain"
+    }
+  }
+}

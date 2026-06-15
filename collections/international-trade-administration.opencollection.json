@@ -1,0 +1,354 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "International Trade Administration Data Services API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Consolidated Screening List",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search the Consolidated Screening List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.trade.gov/consolidated_screening_list/v1/search",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Name of the entity or individual to screen."
+              },
+              {
+                "name": "fuzzy_name",
+                "value": "",
+                "type": "query",
+                "description": "Enable fuzzy name matching."
+              },
+              {
+                "name": "sources",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of source lists to query."
+              },
+              {
+                "name": "countries",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated ISO country codes to filter results."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by type (Entity, Individual, Vessel, Aircraft)."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page (max 100)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "subscription-key",
+              "value": "{{subscription-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Search the unified Consolidated Screening List of parties subject to U.S. export restrictions across the Bureau of Industry and Security, the Department of State, and the Department of the Treasury."
+        },
+        {
+          "info": {
+            "name": "List screening list sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.trade.gov/consolidated_screening_list/v1/sources",
+            "auth": {
+              "type": "apikey",
+              "key": "subscription-key",
+              "value": "{{subscription-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve metadata about all source lists feeding the CSL."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Country Commercial Guides",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Country Commercial Guides",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.trade.gov/CCG/v2/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Free-text query."
+              },
+              {
+                "name": "countries",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated ISO country codes."
+              },
+              {
+                "name": "industries",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated industry filter."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "subscription-key",
+              "value": "{{subscription-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Search Country Commercial Guide chapters published by U.S. commercial service officers covering market conditions and opportunities."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Market Intelligence",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Market Intelligence articles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.trade.gov/market_intelligence/v1/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "countries",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "industries",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "subscription-key",
+              "value": "{{subscription-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve market intelligence reports authored by ITA's industry and country experts."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Trade Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Trade Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.trade.gov/events/v1/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "event_types",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "industries",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "countries",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "subscription-key",
+              "value": "{{subscription-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Search aggregated trade events from federal export-promotion partners including trade missions, webinars, conferences, and in-person trade shows."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Customs Tariff",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search the Customs Info Tariff Database",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.trade.gov/customs_tariff/v1/search",
+            "params": [
+              {
+                "name": "country",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hs_code",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "keyword",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "subscription-key",
+              "value": "{{subscription-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Look up tariff rates and import requirements for products being exported to global markets."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "De Minimis",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search De Minimis values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.trade.gov/de_minimis/v1/search",
+            "params": [
+              {
+                "name": "countries",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "subscription-key",
+              "value": "{{subscription-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Look up de minimis import thresholds for global markets. The de minimis is the value below which no duty or tax is charged on imported goods."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
