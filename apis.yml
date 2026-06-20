@@ -7,7 +7,7 @@ description: >-
   Consolidated Screening List, Country Commercial Guides, Market Intelligence, Trade Events, Customs Tariff lookups, and
   De Minimis thresholds.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Compliance
   - Customs
@@ -31,7 +31,7 @@ apis:
       information via standard APIs, including the Consolidated Screening List, Country Commercial Guides, Market
       Intelligence, Trade Events, Customs Info Tariff Database, and De Minimis values. Access requires a subscription
       key issued through the developer portal.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.trade.gov
     baseURL: https://data.trade.gov
     tags:
