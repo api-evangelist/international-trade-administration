@@ -44,7 +44,7 @@ apis:
         url: https://developer.trade.gov
       - type: GettingStarted
         url: https://developer.trade.gov/getting-started
-      - type: SignUp
+      - type: Signup
         url: https://developer.trade.gov/user/register
       - type: TermsOfService
         url: https://developer.trade.gov/terms-of-service
@@ -69,7 +69,7 @@ common:
     url: https://developer.trade.gov
   - type: GettingStarted
     url: https://developer.trade.gov/getting-started
-  - type: SignUp
+  - type: Signup
     url: https://developer.trade.gov/user/register
   - type: TermsOfService
     url: https://developer.trade.gov/terms-of-service
