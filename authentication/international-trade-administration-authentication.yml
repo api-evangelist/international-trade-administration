@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/international-trade-administration-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: subscriptionKey
+  type: apiKey
+  in: header
+  parameter: subscription-key
+  description: ITA APIs require an Ocp-Apim Subscription Key obtained from the developer.trade.gov
+    portal.
+  sources:
+  - openapi/international-trade-administration-openapi.yml

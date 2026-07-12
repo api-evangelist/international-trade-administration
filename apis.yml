@@ -57,6 +57,10 @@ apis:
       - type: Rules
         url: rules/international-trade-administration-rules.yml
 common:
+  - type: DomainSecurity
+    url: security/international-trade-administration-domain-security.yml
+  - type: Authentication
+    url: authentication/international-trade-administration-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/InternationalTradeAdministration
   - type: LinkedIn
