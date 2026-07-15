@@ -57,6 +57,8 @@ apis:
       - type: Rules
         url: rules/international-trade-administration-rules.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/international-trade-administration-agentic-access.yml
   - type: DomainSecurity
     url: security/international-trade-administration-domain-security.yml
   - type: Authentication
