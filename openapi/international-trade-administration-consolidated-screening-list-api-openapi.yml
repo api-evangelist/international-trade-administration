@@ -1,0 +1,220 @@
+openapi: 3.1.0
+info:
+  title: International Trade Administration Data Services Consolidated Screening List API
+  description: The International Trade Administration (ITA) Data Services Platform provides programmatic access to authoritative U.S. trade data including the Consolidated Screening List (CSL), Country Commercial Guides (CCG), Market Intelligence, Trade Events, and the Customs Info Tariff Database. Access requires an API subscription key issued through the ITA developer portal.
+  version: '1.0'
+  contact:
+    name: ITA Data Services
+    url: https://developer.trade.gov
+    email: DataServices@trade.gov
+  license:
+    name: ITA Terms of Service
+    url: https://developer.trade.gov/terms-of-service
+servers:
+- url: https://data.trade.gov
+  description: Production
+tags:
+- name: Consolidated Screening List
+  description: Search the consolidated list of parties for which the U.S. Government maintains restrictions on certain exports, reexports, or transfers of items. Combines screening lists from the Departments of Commerce, State, and Treasury.
+paths:
+  /consolidated_screening_list/v1/search:
+    get:
+      tags:
+      - Consolidated Screening List
+      summary: Search the Consolidated Screening List
+      description: Search the unified Consolidated Screening List of parties subject to U.S. export restrictions across the Bureau of Industry and Security, the Department of State, and the Department of the Treasury.
+      operationId: searchConsolidatedScreeningList
+      parameters:
+      - name: name
+        in: query
+        description: Name of the entity or individual to screen.
+        schema:
+          type: string
+      - name: fuzzy_name
+        in: query
+        description: Enable fuzzy name matching.
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+      - name: sources
+        in: query
+        description: Comma-separated list of source lists to query.
+        schema:
+          type: string
+      - name: countries
+        in: query
+        description: Comma-separated ISO country codes to filter results.
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: Filter by type (Entity, Individual, Vessel, Aircraft).
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: Number of results per page (max 100).
+        schema:
+          type: integer
+          default: 10
+      - name: offset
+        in: query
+        description: Pagination offset.
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Matching screening-list entries.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScreeningListResults'
+      security:
+      - subscriptionKey: []
+  /consolidated_screening_list/v1/sources:
+    get:
+      tags:
+      - Consolidated Screening List
+      summary: List screening list sources
+      description: Retrieve metadata about all source lists feeding the CSL.
+      operationId: listScreeningSources
+      responses:
+        '200':
+          description: List of source lists.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ScreeningSource'
+      security:
+      - subscriptionKey: []
+components:
+  schemas:
+    Address:
+      type: object
+      properties:
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postal_code:
+          type: string
+        country:
+          type: string
+    ScreeningListEntry:
+      type: object
+      properties:
+        id:
+          type: string
+        source:
+          type: string
+        entity_number:
+          type: string
+        type:
+          type: string
+        name:
+          type: string
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+        alt_names:
+          type: array
+          items:
+            type: string
+        federal_register_notice:
+          type: string
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        standard_order:
+          type: string
+        license_requirement:
+          type: string
+        license_policy:
+          type: string
+        call_sign:
+          type: string
+        vessel_type:
+          type: string
+        gross_tonnage:
+          type: integer
+        gross_registered_tonnage:
+          type: integer
+        vessel_flag:
+          type: string
+        vessel_owner:
+          type: string
+        remarks:
+          type: string
+        source_list_url:
+          type: string
+        source_information_url:
+          type: string
+        ids:
+          type: array
+          items:
+            $ref: '#/components/schemas/IdentityDocument'
+    ScreeningListResults:
+      type: object
+      properties:
+        total:
+          type: integer
+        sources_used:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScreeningSource'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScreeningListEntry'
+    ScreeningSource:
+      type: object
+      properties:
+        source:
+          type: string
+        source_full_name:
+          type: string
+        source_short_name:
+          type: string
+        source_list_url:
+          type: string
+        source_information_url:
+          type: string
+        source_last_imported:
+          type: string
+          format: date-time
+        source_last_updated:
+          type: string
+          format: date-time
+    IdentityDocument:
+      type: object
+      properties:
+        type:
+          type: string
+        number:
+          type: string
+        country:
+          type: string
+        issue_date:
+          type: string
+        expiration_date:
+          type: string
+  securitySchemes:
+    subscriptionKey:
+      type: apiKey
+      in: header
+      name: subscription-key
+      description: ITA APIs require an Ocp-Apim Subscription Key obtained from the developer.trade.gov portal.
+externalDocs:
+  description: ITA Developer Portal
+  url: https://developer.trade.gov

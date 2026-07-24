@@ -1,0 +1,86 @@
+openapi: 3.1.0
+info:
+  title: International Trade Administration Data Services Consolidated Screening List De Minimis API
+  description: The International Trade Administration (ITA) Data Services Platform provides programmatic access to authoritative U.S. trade data including the Consolidated Screening List (CSL), Country Commercial Guides (CCG), Market Intelligence, Trade Events, and the Customs Info Tariff Database. Access requires an API subscription key issued through the ITA developer portal.
+  version: '1.0'
+  contact:
+    name: ITA Data Services
+    url: https://developer.trade.gov
+    email: DataServices@trade.gov
+  license:
+    name: ITA Terms of Service
+    url: https://developer.trade.gov/terms-of-service
+servers:
+- url: https://data.trade.gov
+  description: Production
+tags:
+- name: De Minimis
+  description: Country-level customs de minimis values - the threshold below which duty and tax do not apply to imported goods.
+paths:
+  /de_minimis/v1/search:
+    get:
+      tags:
+      - De Minimis
+      summary: Search De Minimis values
+      description: Look up de minimis import thresholds for global markets. The de minimis is the value below which no duty or tax is charged on imported goods.
+      operationId: searchDeMinimis
+      parameters:
+      - name: countries
+        in: query
+        schema:
+          type: string
+      - name: size
+        in: query
+        schema:
+          type: integer
+          default: 10
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: De minimis values matching the query.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeMinimisResults'
+      security:
+      - subscriptionKey: []
+components:
+  schemas:
+    DeMinimisResults:
+      type: object
+      properties:
+        total:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeMinimisEntry'
+    DeMinimisEntry:
+      type: object
+      properties:
+        country:
+          type: string
+        currency:
+          type: string
+        de_minimis_value:
+          type: number
+        de_minimis_value_usd:
+          type: number
+        notes:
+          type: string
+        last_updated:
+          type: string
+          format: date
+  securitySchemes:
+    subscriptionKey:
+      type: apiKey
+      in: header
+      name: subscription-key
+      description: ITA APIs require an Ocp-Apim Subscription Key obtained from the developer.trade.gov portal.
+externalDocs:
+  description: ITA Developer Portal
+  url: https://developer.trade.gov

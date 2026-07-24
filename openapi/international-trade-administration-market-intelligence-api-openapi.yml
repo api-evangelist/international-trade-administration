@@ -1,0 +1,102 @@
+openapi: 3.1.0
+info:
+  title: International Trade Administration Data Services Consolidated Screening List Market Intelligence API
+  description: The International Trade Administration (ITA) Data Services Platform provides programmatic access to authoritative U.S. trade data including the Consolidated Screening List (CSL), Country Commercial Guides (CCG), Market Intelligence, Trade Events, and the Customs Info Tariff Database. Access requires an API subscription key issued through the ITA developer portal.
+  version: '1.0'
+  contact:
+    name: ITA Data Services
+    url: https://developer.trade.gov
+    email: DataServices@trade.gov
+  license:
+    name: ITA Terms of Service
+    url: https://developer.trade.gov/terms-of-service
+servers:
+- url: https://data.trade.gov
+  description: Production
+tags:
+- name: Market Intelligence
+  description: Curated market intelligence articles authored by ITA's network of international trade specialists.
+paths:
+  /market_intelligence/v1/search:
+    get:
+      tags:
+      - Market Intelligence
+      summary: Search Market Intelligence articles
+      description: Retrieve market intelligence reports authored by ITA's industry and country experts.
+      operationId: searchMarketIntelligence
+      parameters:
+      - name: q
+        in: query
+        schema:
+          type: string
+      - name: countries
+        in: query
+        schema:
+          type: string
+      - name: industries
+        in: query
+        schema:
+          type: string
+      - name: size
+        in: query
+        schema:
+          type: integer
+          default: 10
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Matching market intelligence articles.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MarketIntelligenceResults'
+      security:
+      - subscriptionKey: []
+components:
+  schemas:
+    MarketIntelligenceResults:
+      type: object
+      properties:
+        total:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/MarketIntelligenceArticle'
+    MarketIntelligenceArticle:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        countries:
+          type: array
+          items:
+            type: string
+        industries:
+          type: array
+          items:
+            type: string
+        publish_date:
+          type: string
+          format: date
+        author:
+          type: string
+        summary:
+          type: string
+        url:
+          type: string
+  securitySchemes:
+    subscriptionKey:
+      type: apiKey
+      in: header
+      name: subscription-key
+      description: ITA APIs require an Ocp-Apim Subscription Key obtained from the developer.trade.gov portal.
+externalDocs:
+  description: ITA Developer Portal
+  url: https://developer.trade.gov

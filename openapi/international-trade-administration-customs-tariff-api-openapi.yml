@@ -1,0 +1,91 @@
+openapi: 3.1.0
+info:
+  title: International Trade Administration Data Services Consolidated Screening List Customs Tariff API
+  description: The International Trade Administration (ITA) Data Services Platform provides programmatic access to authoritative U.S. trade data including the Consolidated Screening List (CSL), Country Commercial Guides (CCG), Market Intelligence, Trade Events, and the Customs Info Tariff Database. Access requires an API subscription key issued through the ITA developer portal.
+  version: '1.0'
+  contact:
+    name: ITA Data Services
+    url: https://developer.trade.gov
+    email: DataServices@trade.gov
+  license:
+    name: ITA Terms of Service
+    url: https://developer.trade.gov/terms-of-service
+servers:
+- url: https://data.trade.gov
+  description: Production
+tags:
+- name: Customs Tariff
+  description: Tariff rates and import requirements for U.S. exports across global markets via the Customs Info Database.
+paths:
+  /customs_tariff/v1/search:
+    get:
+      tags:
+      - Customs Tariff
+      summary: Search the Customs Info Tariff Database
+      description: Look up tariff rates and import requirements for products being exported to global markets.
+      operationId: searchCustomsTariff
+      parameters:
+      - name: country
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: hs_code
+        in: query
+        schema:
+          type: string
+      - name: keyword
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Tariff lookup results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomsTariffResults'
+      security:
+      - subscriptionKey: []
+components:
+  schemas:
+    TariffEntry:
+      type: object
+      properties:
+        country:
+          type: string
+        hs_code:
+          type: string
+        description:
+          type: string
+        general_rate:
+          type: string
+        special_rates:
+          type: array
+          items:
+            type: object
+            properties:
+              program:
+                type: string
+              rate:
+                type: string
+        notes:
+          type: string
+    CustomsTariffResults:
+      type: object
+      properties:
+        total:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TariffEntry'
+  securitySchemes:
+    subscriptionKey:
+      type: apiKey
+      in: header
+      name: subscription-key
+      description: ITA APIs require an Ocp-Apim Subscription Key obtained from the developer.trade.gov portal.
+externalDocs:
+  description: ITA Developer Portal
+  url: https://developer.trade.gov

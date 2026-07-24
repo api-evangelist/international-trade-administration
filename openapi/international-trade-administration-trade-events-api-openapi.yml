@@ -1,0 +1,157 @@
+openapi: 3.1.0
+info:
+  title: International Trade Administration Data Services Consolidated Screening List Trade Events API
+  description: The International Trade Administration (ITA) Data Services Platform provides programmatic access to authoritative U.S. trade data including the Consolidated Screening List (CSL), Country Commercial Guides (CCG), Market Intelligence, Trade Events, and the Customs Info Tariff Database. Access requires an API subscription key issued through the ITA developer portal.
+  version: '1.0'
+  contact:
+    name: ITA Data Services
+    url: https://developer.trade.gov
+    email: DataServices@trade.gov
+  license:
+    name: ITA Terms of Service
+    url: https://developer.trade.gov/terms-of-service
+servers:
+- url: https://data.trade.gov
+  description: Production
+tags:
+- name: Trade Events
+  description: Aggregated international trade events including trade missions, conferences, webinars, and trade shows from federal partners.
+paths:
+  /events/v1/search:
+    get:
+      tags:
+      - Trade Events
+      summary: Search Trade Events
+      description: Search aggregated trade events from federal export-promotion partners including trade missions, webinars, conferences, and in-person trade shows.
+      operationId: searchTradeEvents
+      parameters:
+      - name: q
+        in: query
+        schema:
+          type: string
+      - name: event_types
+        in: query
+        schema:
+          type: string
+      - name: industries
+        in: query
+        schema:
+          type: string
+      - name: countries
+        in: query
+        schema:
+          type: string
+      - name: start_date
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: size
+        in: query
+        schema:
+          type: integer
+          default: 10
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Matching trade events.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TradeEventsResults'
+      security:
+      - subscriptionKey: []
+components:
+  schemas:
+    TradeEventsResults:
+      type: object
+      properties:
+        total:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TradeEvent'
+    TradeEvent:
+      type: object
+      properties:
+        id:
+          type: string
+        event_name:
+          type: string
+        event_type:
+          type: string
+        description:
+          type: string
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        venues:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventVenue'
+        registration_link:
+          type: string
+        cost:
+          type: string
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventContact'
+        industries:
+          type: array
+          items:
+            type: string
+        countries:
+          type: array
+          items:
+            type: string
+        url:
+          type: string
+        sponsoring_agency:
+          type: string
+    EventVenue:
+      type: object
+      properties:
+        venue:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        state:
+          type: string
+    EventContact:
+      type: object
+      properties:
+        person:
+          type: string
+        person_title:
+          type: string
+        post:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+  securitySchemes:
+    subscriptionKey:
+      type: apiKey
+      in: header
+      name: subscription-key
+      description: ITA APIs require an Ocp-Apim Subscription Key obtained from the developer.trade.gov portal.
+externalDocs:
+  description: ITA Developer Portal
+  url: https://developer.trade.gov
