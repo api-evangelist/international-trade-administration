@@ -35,7 +35,7 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/international-trade-administration/refs/heads/main/apis.yml
 created: '2024-12-03'
 modified: '2026-05-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: >-
     international-trade-administration:international-trade-administration-consolidated-screening-list-api
