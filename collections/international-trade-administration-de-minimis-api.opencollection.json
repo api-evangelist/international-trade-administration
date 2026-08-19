@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "International Trade Administration Data Services Consolidated Screening List De Minimis API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "De Minimis",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search De Minimis values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.trade.gov/de_minimis/v1/search",
+            "params": [
+              {
+                "name": "countries",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "subscription-key",
+              "value": "{{subscription-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Look up de minimis import thresholds for global markets. The de minimis is the value below which no duty or tax is charged on imported goods."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

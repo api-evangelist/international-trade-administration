@@ -1,0 +1,180 @@
+{
+  "item": [
+    {
+      "id": "55e81930-b561-462b-8d6f-2b3bf3a733bc",
+      "name": "Country Commercial Guides",
+      "description": {
+        "content": "Country-specific reports prepared by U.S. embassies covering the market conditions, opportunities, regulations, and business customs for U.S. exporters.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bd50e08d-696f-4145-80c7-b118dfeec164",
+          "name": "Search Country Commercial Guides",
+          "request": {
+            "name": "Search Country Commercial Guides",
+            "description": {
+              "content": "Search Country Commercial Guide chapters published by U.S. commercial service officers covering market conditions and opportunities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "CCG",
+                "v2",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Free-text query."
+                },
+                {
+                  "disabled": false,
+                  "key": "countries",
+                  "value": "<string>",
+                  "description": "Comma-separated ISO country codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "industries",
+                  "value": "<string>",
+                  "description": "Comma-separated industry filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "10"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "subscription-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9ca40b0c-1d31-4e30-8a86-2bef3f4bf004",
+              "name": "Matching Country Commercial Guide chapters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CCG",
+                    "v2",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countries",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "industries",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "subscription-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 2095,\n  \"results\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"countries\": [\n        \"string\",\n        \"string\"\n      ],\n      \"industries\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\",\n      \"publish_date\": \"1980-01-31\",\n      \"content\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"countries\": [\n        \"string\",\n        \"string\"\n      ],\n      \"industries\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\",\n      \"publish_date\": \"1955-10-25\",\n      \"content\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data.trade.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ee8c6224-9d86-4457-a557-fed9a3f33720",
+    "name": "International Trade Administration Data Services Consolidated Screening List Country Commercial Guides API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The International Trade Administration (ITA) Data Services Platform provides programmatic access to authoritative U.S. trade data including the Consolidated Screening List (CSL), Country Commercial Guides (CCG), Market Intelligence, Trade Events, and the Customs Info Tariff Database. Access requires an API subscription key issued through the ITA developer portal.\n\nContact Support:\n Name: ITA Data Services\n Email: DataServices@trade.gov",
+      "type": "text/plain"
+    }
+  }
+}

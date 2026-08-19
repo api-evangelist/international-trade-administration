@@ -1,0 +1,160 @@
+{
+  "item": [
+    {
+      "id": "52b86628-916d-4874-9b53-e13515a605f6",
+      "name": "Customs Tariff",
+      "description": {
+        "content": "Tariff rates and import requirements for U.S. exports across global markets via the Customs Info Database.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d98ac3ad-c2b4-4404-aae7-aa532b5b538c",
+          "name": "Search the Customs Info Tariff Database",
+          "request": {
+            "name": "Search the Customs Info Tariff Database",
+            "description": {
+              "content": "Look up tariff rates and import requirements for products being exported to global markets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customs_tariff",
+                "v1",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "hs_code",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "keyword",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "subscription-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a409227b-82a4-4219-b729-3b7e26274d9a",
+              "name": "Tariff lookup results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customs_tariff",
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hs_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "subscription-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 5903,\n  \"results\": [\n    {\n      \"country\": \"string\",\n      \"hs_code\": \"string\",\n      \"description\": \"string\",\n      \"general_rate\": \"string\",\n      \"special_rates\": [\n        {\n          \"program\": \"string\",\n          \"rate\": \"string\"\n        },\n        {\n          \"program\": \"string\",\n          \"rate\": \"string\"\n        }\n      ],\n      \"notes\": \"string\"\n    },\n    {\n      \"country\": \"string\",\n      \"hs_code\": \"string\",\n      \"description\": \"string\",\n      \"general_rate\": \"string\",\n      \"special_rates\": [\n        {\n          \"program\": \"string\",\n          \"rate\": \"string\"\n        },\n        {\n          \"program\": \"string\",\n          \"rate\": \"string\"\n        }\n      ],\n      \"notes\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data.trade.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "71b10501-eb97-4c6a-a1a9-68f69d8fe570",
+    "name": "International Trade Administration Data Services Consolidated Screening List Customs Tariff API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The International Trade Administration (ITA) Data Services Platform provides programmatic access to authoritative U.S. trade data including the Consolidated Screening List (CSL), Country Commercial Guides (CCG), Market Intelligence, Trade Events, and the Customs Info Tariff Database. Access requires an API subscription key issued through the ITA developer portal.\n\nContact Support:\n Name: ITA Data Services\n Email: DataServices@trade.gov",
+      "type": "text/plain"
+    }
+  }
+}

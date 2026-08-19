@@ -1,0 +1,300 @@
+{
+  "item": [
+    {
+      "id": "c08a8da0-3dae-48fb-96c6-5f57a75ed221",
+      "name": "Consolidated Screening List",
+      "description": {
+        "content": "Search the consolidated list of parties for which the U.S. Government maintains restrictions on certain exports, reexports, or transfers of items. Combines screening lists from the Departments of Commerce, State, and Treasury.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "084e016d-a2a8-4609-9e26-31c962e4be00",
+          "name": "Search the Consolidated Screening List",
+          "request": {
+            "name": "Search the Consolidated Screening List",
+            "description": {
+              "content": "Search the unified Consolidated Screening List of parties subject to U.S. export restrictions across the Bureau of Industry and Security, the Department of State, and the Department of the Treasury.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "consolidated_screening_list",
+                "v1",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Name of the entity or individual to screen."
+                },
+                {
+                  "disabled": false,
+                  "key": "fuzzy_name",
+                  "value": "<string>",
+                  "description": "Enable fuzzy name matching."
+                },
+                {
+                  "disabled": false,
+                  "key": "sources",
+                  "value": "<string>",
+                  "description": "Comma-separated list of source lists to query."
+                },
+                {
+                  "disabled": false,
+                  "key": "countries",
+                  "value": "<string>",
+                  "description": "Comma-separated ISO country codes to filter results."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by type (Entity, Individual, Vessel, Aircraft)."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "10",
+                  "description": "Number of results per page (max 100)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Pagination offset."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "subscription-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9ec04b2e-4361-4406-b8b7-5718b8fe8b57",
+              "name": "Matching screening-list entries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "consolidated_screening_list",
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fuzzy_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countries",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "subscription-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 7751,\n  \"sources_used\": [\n    {\n      \"source\": \"string\",\n      \"source_full_name\": \"string\",\n      \"source_short_name\": \"string\",\n      \"source_list_url\": \"string\",\n      \"source_information_url\": \"string\",\n      \"source_last_imported\": \"1969-08-19T16:36:09.022Z\",\n      \"source_last_updated\": \"1991-08-30T00:47:43.006Z\"\n    },\n    {\n      \"source\": \"string\",\n      \"source_full_name\": \"string\",\n      \"source_short_name\": \"string\",\n      \"source_list_url\": \"string\",\n      \"source_information_url\": \"string\",\n      \"source_last_imported\": \"1980-07-25T13:53:57.578Z\",\n      \"source_last_updated\": \"2020-12-11T19:29:35.970Z\"\n    }\n  ],\n  \"results\": [\n    {\n      \"id\": \"string\",\n      \"source\": \"string\",\n      \"entity_number\": \"string\",\n      \"type\": \"string\",\n      \"name\": \"string\",\n      \"addresses\": [\n        {\n          \"address\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"postal_code\": \"string\",\n          \"country\": \"string\"\n        },\n        {\n          \"address\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"postal_code\": \"string\",\n          \"country\": \"string\"\n        }\n      ],\n      \"alt_names\": [\n        \"string\",\n        \"string\"\n      ],\n      \"federal_register_notice\": \"string\",\n      \"start_date\": \"1999-09-24\",\n      \"end_date\": \"1987-07-31\",\n      \"standard_order\": \"string\",\n      \"license_requirement\": \"string\",\n      \"license_policy\": \"string\",\n      \"call_sign\": \"string\",\n      \"vessel_type\": \"string\",\n      \"gross_tonnage\": 1250,\n      \"gross_registered_tonnage\": 267,\n      \"vessel_flag\": \"string\",\n      \"vessel_owner\": \"string\",\n      \"remarks\": \"string\",\n      \"source_list_url\": \"string\",\n      \"source_information_url\": \"string\",\n      \"ids\": [\n        {\n          \"type\": \"string\",\n          \"number\": \"string\",\n          \"country\": \"string\",\n          \"issue_date\": \"string\",\n          \"expiration_date\": \"string\"\n        },\n        {\n          \"type\": \"string\",\n          \"number\": \"string\",\n          \"country\": \"string\",\n          \"issue_date\": \"string\",\n          \"expiration_date\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"source\": \"string\",\n      \"entity_number\": \"string\",\n      \"type\": \"string\",\n      \"name\": \"string\",\n      \"addresses\": [\n        {\n          \"address\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"postal_code\": \"string\",\n          \"country\": \"string\"\n        },\n        {\n          \"address\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"postal_code\": \"string\",\n          \"country\": \"string\"\n        }\n      ],\n      \"alt_names\": [\n        \"string\",\n        \"string\"\n      ],\n      \"federal_register_notice\": \"string\",\n      \"start_date\": \"1982-03-21\",\n      \"end_date\": \"2010-08-10\",\n      \"standard_order\": \"string\",\n      \"license_requirement\": \"string\",\n      \"license_policy\": \"string\",\n      \"call_sign\": \"string\",\n      \"vessel_type\": \"string\",\n      \"gross_tonnage\": 2242,\n      \"gross_registered_tonnage\": 6405,\n      \"vessel_flag\": \"string\",\n      \"vessel_owner\": \"string\",\n      \"remarks\": \"string\",\n      \"source_list_url\": \"string\",\n      \"source_information_url\": \"string\",\n      \"ids\": [\n        {\n          \"type\": \"string\",\n          \"number\": \"string\",\n          \"country\": \"string\",\n          \"issue_date\": \"string\",\n          \"expiration_date\": \"string\"\n        },\n        {\n          \"type\": \"string\",\n          \"number\": \"string\",\n          \"country\": \"string\",\n          \"issue_date\": \"string\",\n          \"expiration_date\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d22c1db7-943b-4e30-a953-24696ef04e3f",
+          "name": "List screening list sources",
+          "request": {
+            "name": "List screening list sources",
+            "description": {
+              "content": "Retrieve metadata about all source lists feeding the CSL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "consolidated_screening_list",
+                "v1",
+                "sources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "subscription-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8bcbd65e-42f7-478d-8091-af062006bd92",
+              "name": "List of source lists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "consolidated_screening_list",
+                    "v1",
+                    "sources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "subscription-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"source\": \"string\",\n    \"source_full_name\": \"string\",\n    \"source_short_name\": \"string\",\n    \"source_list_url\": \"string\",\n    \"source_information_url\": \"string\",\n    \"source_last_imported\": \"1983-11-21T02:42:36.305Z\",\n    \"source_last_updated\": \"2011-04-18T11:25:45.081Z\"\n  },\n  {\n    \"source\": \"string\",\n    \"source_full_name\": \"string\",\n    \"source_short_name\": \"string\",\n    \"source_list_url\": \"string\",\n    \"source_information_url\": \"string\",\n    \"source_last_imported\": \"1994-01-08T15:37:26.262Z\",\n    \"source_last_updated\": \"2002-09-17T04:44:15.299Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data.trade.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fbb3a497-23b6-4fa7-a121-56b3cccab6c6",
+    "name": "International Trade Administration Data Services Consolidated Screening List API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The International Trade Administration (ITA) Data Services Platform provides programmatic access to authoritative U.S. trade data including the Consolidated Screening List (CSL), Country Commercial Guides (CCG), Market Intelligence, Trade Events, and the Customs Info Tariff Database. Access requires an API subscription key issued through the ITA developer portal.\n\nContact Support:\n Name: ITA Data Services\n Email: DataServices@trade.gov",
+      "type": "text/plain"
+    }
+  }
+}

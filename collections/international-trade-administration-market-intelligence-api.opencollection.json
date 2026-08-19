@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "International Trade Administration Data Services Consolidated Screening List Market Intelligence API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Market Intelligence",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Market Intelligence articles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.trade.gov/market_intelligence/v1/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "countries",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "industries",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "subscription-key",
+              "value": "{{subscription-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve market intelligence reports authored by ITA's industry and country experts."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

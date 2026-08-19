@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "International Trade Administration Data Services Consolidated Screening List Trade Events API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Trade Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Trade Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.trade.gov/events/v1/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "event_types",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "industries",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "countries",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "subscription-key",
+              "value": "{{subscription-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Search aggregated trade events from federal export-promotion partners including trade missions, webinars, conferences, and in-person trade shows."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

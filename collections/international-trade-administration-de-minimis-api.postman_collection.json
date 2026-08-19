@@ -1,0 +1,159 @@
+{
+  "item": [
+    {
+      "id": "98da9398-a6ce-44f2-886c-57e1156e84ac",
+      "name": "De Minimis",
+      "description": {
+        "content": "Country-level customs de minimis values - the threshold below which duty and tax do not apply to imported goods.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b28ae71a-81c3-4144-9031-29b1f21e9ed3",
+          "name": "Search De Minimis values",
+          "request": {
+            "name": "Search De Minimis values",
+            "description": {
+              "content": "Look up de minimis import thresholds for global markets. The de minimis is the value below which no duty or tax is charged on imported goods.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "de_minimis",
+                "v1",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "countries",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "10"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "subscription-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d28dbb7b-e42e-4a3e-853c-e4b87009f130",
+              "name": "De minimis values matching the query.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "de_minimis",
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countries",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "subscription-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 8872,\n  \"results\": [\n    {\n      \"country\": \"string\",\n      \"currency\": \"string\",\n      \"de_minimis_value\": 74.32544020518517,\n      \"de_minimis_value_usd\": 6892.157425085983,\n      \"notes\": \"string\",\n      \"last_updated\": \"1949-06-16\"\n    },\n    {\n      \"country\": \"string\",\n      \"currency\": \"string\",\n      \"de_minimis_value\": 8910.478694345875,\n      \"de_minimis_value_usd\": 8295.8671956724,\n      \"notes\": \"string\",\n      \"last_updated\": \"1965-04-24\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data.trade.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "147ce6f6-2b22-4714-bc99-ef22d47b1660",
+    "name": "International Trade Administration Data Services Consolidated Screening List De Minimis API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The International Trade Administration (ITA) Data Services Platform provides programmatic access to authoritative U.S. trade data including the Consolidated Screening List (CSL), Country Commercial Guides (CCG), Market Intelligence, Trade Events, and the Customs Info Tariff Database. Access requires an API subscription key issued through the ITA developer portal.\n\nContact Support:\n Name: ITA Data Services\n Email: DataServices@trade.gov",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "International Trade Administration Data Services Consolidated Screening List Customs Tariff API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customs Tariff",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search the Customs Info Tariff Database",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.trade.gov/customs_tariff/v1/search",
+            "params": [
+              {
+                "name": "country",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hs_code",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "keyword",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "subscription-key",
+              "value": "{{subscription-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Look up tariff rates and import requirements for products being exported to global markets."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

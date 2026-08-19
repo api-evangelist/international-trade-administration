@@ -1,0 +1,96 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "International Trade Administration Data Services Consolidated Screening List API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Consolidated Screening List",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search the Consolidated Screening List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.trade.gov/consolidated_screening_list/v1/search",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Name of the entity or individual to screen."
+              },
+              {
+                "name": "fuzzy_name",
+                "value": "",
+                "type": "query",
+                "description": "Enable fuzzy name matching."
+              },
+              {
+                "name": "sources",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of source lists to query."
+              },
+              {
+                "name": "countries",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated ISO country codes to filter results."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by type (Entity, Individual, Vessel, Aircraft)."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page (max 100)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "subscription-key",
+              "value": "{{subscription-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Search the unified Consolidated Screening List of parties subject to U.S. export restrictions across the Bureau of Industry and Security, the Department of State, and the Department of the Treasury."
+        },
+        {
+          "info": {
+            "name": "List screening list sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.trade.gov/consolidated_screening_list/v1/sources",
+            "auth": {
+              "type": "apikey",
+              "key": "subscription-key",
+              "value": "{{subscription-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve metadata about all source lists feeding the CSL."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
