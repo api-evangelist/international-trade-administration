@@ -1,0 +1,48 @@
+slug: international-trade-administration
+provider: International Trade Administration
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Consolidated Screening List
+  spec_file: international-trade-administration-consolidated-screening-list-api-openapi.yml
+  capability_id: BC-2480.40
+  capability_id_l1: BC-2480
+  capability_name: Sanctions and Denied-Party Screening Management
+  confidence: 0.92
+  evidence: GET /consolidated_screening_list/v1/search  searchConsolidatedScreeningList  Search the Consolidated
+    Screening List; GET .../sources  listScreeningSources; schemas ScreeningListEntry, ScreeningSource
+  reason: The CSL is the U.S. government's consolidated denied/restricted party list; these operations
+    search parties against it and enumerate the contributing sanctions lists. That is exactly sanctions
+    and denied-party screening for cross-border trade.
+- tag: Customs Tariff
+  spec_file: international-trade-administration-customs-tariff-api-openapi.yml
+  capability_id: BC-2480
+  capability_id_l1: BC-2480
+  capability_name: Customs & Trade Compliance Management
+  confidence: 0.78
+  evidence: 'GET /customs_tariff/v1/search — "Search the Customs Info Tariff Database"; schemas: TariffEntry,
+    CustomsTariffResults'
+  reason: The operation exposes the Customs Info Tariff Database (HS-code tariff/duty lookups), which
+    is squarely customs & trade compliance data. Sub-capability is ambiguous between tariff classification
+    and duty determination, so only the L1 is asserted.
+- tag: Country Commercial Guides
+  spec_file: international-trade-administration-country-commercial-guides-api-openapi.yml
+  capability_id: BC-400.30
+  capability_id_l1: BC-400
+  capability_name: Market Intelligence Management
+  confidence: 0.72
+  evidence: GET /CCG/v2/search  searchCountryCommercialGuides  Search Country Commercial Guides; schemas
+    CCGResults, CCGChapter
+  reason: Country Commercial Guides are country-by-country market research and business-environment intelligence
+    for exporters, consumed as searchable chapters. Best fits Market Intelligence Management; it is a
+    content/research corpus rather than a customs or compliance filing surface.

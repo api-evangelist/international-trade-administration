@@ -219,6 +219,9 @@ apis:
   - type: Rules
     url: rules/international-trade-administration-rules.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/international-trade-administration-capability-edges.yml
+    name: International Trade Administration Business Capability Map
   - type: AgenticAccess
     url: agentic-access/international-trade-administration-agentic-access.yml
   - type: DomainSecurity
