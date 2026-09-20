@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 3
+edge_count: 4
 edges:
 - tag: Consolidated Screening List
   spec_file: international-trade-administration-consolidated-screening-list-api-openapi.yml
@@ -35,6 +35,19 @@ edges:
   reason: The operation exposes the Customs Info Tariff Database (HS-code tariff/duty lookups), which
     is squarely customs & trade compliance data. Sub-capability is ambiguous between tariff classification
     and duty determination, so only the L1 is asserted.
+- tag: Market Intelligence
+  spec_file: international-trade-administration-market-intelligence-api-openapi.yml
+  capability_id: BC-400.30
+  capability_id_l1: BC-400
+  capability_name: Market Intelligence Management
+  confidence: 0.75
+  evidence: GET /market_intelligence/v1/search — 'Search Market Intelligence articles'; schemas MarketIntelligenceArticle,
+    MarketIntelligenceResults
+  reason: The operation retrieves market intelligence articles on foreign markets, which is precisely
+    market research / competitive intelligence content used for go-to-market decisions. Some ambiguity
+    remains because the vendor is a government publisher of the content rather than a consumer of it,
+    hence 0.75.
+  recovered_from: vertical-public-sector-government-edges.json
 - tag: Country Commercial Guides
   spec_file: international-trade-administration-country-commercial-guides-api-openapi.yml
   capability_id: BC-400.30
