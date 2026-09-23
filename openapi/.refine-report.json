@@ -1,12 +1,7 @@
 {
   "provider": "international-trade-administration",
   "sources": [
-    "international-trade-administration-consolidated-screening-list-api-openapi.yml",
-    "international-trade-administration-country-commercial-guides-api-openapi.yml",
-    "international-trade-administration-customs-tariff-api-openapi.yml",
-    "international-trade-administration-de-minimis-api-openapi.yml",
-    "international-trade-administration-market-intelligence-api-openapi.yml",
-    "international-trade-administration-trade-events-api-openapi.yml"
+    "_original/international-trade-administration-openapi.yml"
   ],
   "outputs": [
     "international-trade-administration-consolidated-screening-list-api-openapi.yml",
@@ -19,6 +14,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "international-trade-administration-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "international-trade-administration-consolidated-screening-list-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "international-trade-administration-country-commercial-guides-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "international-trade-administration-customs-tariff-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "international-trade-administration-de-minimis-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "international-trade-administration-market-intelligence-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "international-trade-administration-trade-events-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

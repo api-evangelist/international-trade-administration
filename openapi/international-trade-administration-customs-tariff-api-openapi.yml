@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: International Trade Administration Data Services Consolidated Screening List Customs Tariff API
+  title: International Trade Administration Data Services Customs…
   description: The International Trade Administration (ITA) Data Services Platform provides programmatic access to authoritative U.S. trade data including the Consolidated Screening List (CSL), Country Commercial Guides (CCG), Market Intelligence, Trade Events, and the Customs Info Tariff Database. Access requires an API subscription key issued through the ITA developer portal.
   version: '1.0'
   contact:
@@ -49,6 +49,15 @@ paths:
       - subscriptionKey: []
 components:
   schemas:
+    CustomsTariffResults:
+      type: object
+      properties:
+        total:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TariffEntry'
     TariffEntry:
       type: object
       properties:
@@ -71,15 +80,6 @@ components:
                 type: string
         notes:
           type: string
-    CustomsTariffResults:
-      type: object
-      properties:
-        total:
-          type: integer
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/TariffEntry'
   securitySchemes:
     subscriptionKey:
       type: apiKey

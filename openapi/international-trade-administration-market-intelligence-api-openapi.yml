@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: International Trade Administration Data Services Consolidated Screening List Market Intelligence API
+  title: International Trade Administration Data Services Market…
   description: The International Trade Administration (ITA) Data Services Platform provides programmatic access to authoritative U.S. trade data including the Consolidated Screening List (CSL), Country Commercial Guides (CCG), Market Intelligence, Trade Events, and the Customs Info Tariff Database. Access requires an API subscription key issued through the ITA developer portal.
   version: '1.0'
   contact:
@@ -58,15 +58,6 @@ paths:
       - subscriptionKey: []
 components:
   schemas:
-    MarketIntelligenceResults:
-      type: object
-      properties:
-        total:
-          type: integer
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/MarketIntelligenceArticle'
     MarketIntelligenceArticle:
       type: object
       properties:
@@ -91,6 +82,15 @@ components:
           type: string
         url:
           type: string
+    MarketIntelligenceResults:
+      type: object
+      properties:
+        total:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/MarketIntelligenceArticle'
   securitySchemes:
     subscriptionKey:
       type: apiKey

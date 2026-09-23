@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: International Trade Administration Data Services Consolidated Screening List Trade Events API
+  title: International Trade Administration Data Services Trade…
   description: The International Trade Administration (ITA) Data Services Platform provides programmatic access to authoritative U.S. trade data including the Consolidated Screening List (CSL), Country Commercial Guides (CCG), Market Intelligence, Trade Events, and the Customs Info Tariff Database. Access requires an API subscription key issued through the ITA developer portal.
   version: '1.0'
   contact:
@@ -72,15 +72,6 @@ paths:
       - subscriptionKey: []
 components:
   schemas:
-    TradeEventsResults:
-      type: object
-      properties:
-        total:
-          type: integer
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/TradeEvent'
     TradeEvent:
       type: object
       properties:
@@ -122,17 +113,15 @@ components:
           type: string
         sponsoring_agency:
           type: string
-    EventVenue:
+    TradeEventsResults:
       type: object
       properties:
-        venue:
-          type: string
-        city:
-          type: string
-        country:
-          type: string
-        state:
-          type: string
+        total:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TradeEvent'
     EventContact:
       type: object
       properties:
@@ -145,6 +134,17 @@ components:
         email:
           type: string
         phone:
+          type: string
+    EventVenue:
+      type: object
+      properties:
+        venue:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        state:
           type: string
   securitySchemes:
     subscriptionKey:
