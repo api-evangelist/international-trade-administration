@@ -50,6 +50,15 @@ paths:
       - subscriptionKey: []
 components:
   schemas:
+    DeMinimisResults:
+      type: object
+      properties:
+        total:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeMinimisEntry'
     DeMinimisEntry:
       type: object
       properties:
@@ -66,15 +75,6 @@ components:
         last_updated:
           type: string
           format: date
-    DeMinimisResults:
-      type: object
-      properties:
-        total:
-          type: integer
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeMinimisEntry'
   securitySchemes:
     subscriptionKey:
       type: apiKey

@@ -38,7 +38,7 @@ tags:
   - Compliance
   - Customs
   - Export
-  - Federal-Government
+  - Federal Government
   - International Business
   - Screening List
   - Tariffs
@@ -56,6 +56,7 @@ tags_raw:
   - Trade
   - Trade Data
   - Trade Events
+  - Federal-Government
 url: https://raw.githubusercontent.com/api-evangelist/international-trade-administration/refs/heads/main/apis.yml
 created: '2024-12-03'
 modified: '2026-05-19'

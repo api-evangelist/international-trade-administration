@@ -58,6 +58,15 @@ paths:
       - subscriptionKey: []
 components:
   schemas:
+    MarketIntelligenceResults:
+      type: object
+      properties:
+        total:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/MarketIntelligenceArticle'
     MarketIntelligenceArticle:
       type: object
       properties:
@@ -82,15 +91,6 @@ components:
           type: string
         url:
           type: string
-    MarketIntelligenceResults:
-      type: object
-      properties:
-        total:
-          type: integer
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/MarketIntelligenceArticle'
   securitySchemes:
     subscriptionKey:
       type: apiKey
