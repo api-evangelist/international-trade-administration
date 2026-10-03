@@ -61,15 +61,6 @@ paths:
       - subscriptionKey: []
 components:
   schemas:
-    CCGResults:
-      type: object
-      properties:
-        total:
-          type: integer
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/CCGChapter'
     CCGChapter:
       type: object
       properties:
@@ -92,6 +83,15 @@ components:
           format: date
         content:
           type: string
+    CCGResults:
+      type: object
+      properties:
+        total:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/CCGChapter'
   securitySchemes:
     subscriptionKey:
       type: apiKey

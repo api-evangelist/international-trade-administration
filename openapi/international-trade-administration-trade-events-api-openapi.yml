@@ -72,15 +72,6 @@ paths:
       - subscriptionKey: []
 components:
   schemas:
-    TradeEventsResults:
-      type: object
-      properties:
-        total:
-          type: integer
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/TradeEvent'
     EventVenue:
       type: object
       properties:
@@ -92,19 +83,15 @@ components:
           type: string
         state:
           type: string
-    EventContact:
+    TradeEventsResults:
       type: object
       properties:
-        person:
-          type: string
-        person_title:
-          type: string
-        post:
-          type: string
-        email:
-          type: string
-        phone:
-          type: string
+        total:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TradeEvent'
     TradeEvent:
       type: object
       properties:
@@ -145,6 +132,19 @@ components:
         url:
           type: string
         sponsoring_agency:
+          type: string
+    EventContact:
+      type: object
+      properties:
+        person:
+          type: string
+        person_title:
+          type: string
+        post:
+          type: string
+        email:
+          type: string
+        phone:
           type: string
   securitySchemes:
     subscriptionKey:

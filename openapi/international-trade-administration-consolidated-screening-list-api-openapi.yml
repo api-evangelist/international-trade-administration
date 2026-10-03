@@ -94,19 +94,6 @@ paths:
       - subscriptionKey: []
 components:
   schemas:
-    Address:
-      type: object
-      properties:
-        address:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        postal_code:
-          type: string
-        country:
-          type: string
     ScreeningSource:
       type: object
       properties:
@@ -138,6 +125,32 @@ components:
         issue_date:
           type: string
         expiration_date:
+          type: string
+    ScreeningListResults:
+      type: object
+      properties:
+        total:
+          type: integer
+        sources_used:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScreeningSource'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScreeningListEntry'
+    Address:
+      type: object
+      properties:
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postal_code:
+          type: string
+        country:
           type: string
     ScreeningListEntry:
       type: object
@@ -196,19 +209,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/IdentityDocument'
-    ScreeningListResults:
-      type: object
-      properties:
-        total:
-          type: integer
-        sources_used:
-          type: array
-          items:
-            $ref: '#/components/schemas/ScreeningSource'
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ScreeningListEntry'
   securitySchemes:
     subscriptionKey:
       type: apiKey
