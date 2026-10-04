@@ -49,15 +49,6 @@ paths:
       - subscriptionKey: []
 components:
   schemas:
-    CustomsTariffResults:
-      type: object
-      properties:
-        total:
-          type: integer
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/TariffEntry'
     TariffEntry:
       type: object
       properties:
@@ -80,6 +71,15 @@ components:
                 type: string
         notes:
           type: string
+    CustomsTariffResults:
+      type: object
+      properties:
+        total:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TariffEntry'
   securitySchemes:
     subscriptionKey:
       type: apiKey
