@@ -94,32 +94,6 @@ paths:
       - subscriptionKey: []
 components:
   schemas:
-    IdentityDocument:
-      type: object
-      properties:
-        type:
-          type: string
-        number:
-          type: string
-        country:
-          type: string
-        issue_date:
-          type: string
-        expiration_date:
-          type: string
-    ScreeningListResults:
-      type: object
-      properties:
-        total:
-          type: integer
-        sources_used:
-          type: array
-          items:
-            $ref: '#/components/schemas/ScreeningSource'
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ScreeningListEntry'
     ScreeningListEntry:
       type: object
       properties:
@@ -177,19 +151,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/IdentityDocument'
-    Address:
-      type: object
-      properties:
-        address:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        postal_code:
-          type: string
-        country:
-          type: string
     ScreeningSource:
       type: object
       properties:
@@ -209,6 +170,45 @@ components:
         source_last_updated:
           type: string
           format: date-time
+    Address:
+      type: object
+      properties:
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postal_code:
+          type: string
+        country:
+          type: string
+    ScreeningListResults:
+      type: object
+      properties:
+        total:
+          type: integer
+        sources_used:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScreeningSource'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScreeningListEntry'
+    IdentityDocument:
+      type: object
+      properties:
+        type:
+          type: string
+        number:
+          type: string
+        country:
+          type: string
+        issue_date:
+          type: string
+        expiration_date:
+          type: string
   securitySchemes:
     subscriptionKey:
       type: apiKey
